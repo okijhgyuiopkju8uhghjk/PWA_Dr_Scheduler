@@ -33,7 +33,7 @@ document.addEventListener('DOMContentLoaded', () => {
   createBtn.addEventListener('click', () => {
     const selectedDay = document.querySelector('input[name="day"]:checked').value;
     const today = new Date();
-    const targetDate = selectedDay === 'today' ? today : new Date(today.getTime() + 24*60*60*1000);
+    const targetDate = selectedDay === 'today icu/ot doctors' ? today : new Date(today.getTime() + 24*60*60*1000);
     const dateStr = targetDate.toLocaleDateString('en-IN');
 
     let text = `${selectedDay.toUpperCase()}\nDate: ${dateStr}\n`;
