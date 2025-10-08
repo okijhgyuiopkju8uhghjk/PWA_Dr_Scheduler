@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Doctor Duty Scheduler</title>
+  <link rel="stylesheet" href="styles/style.css">
+  <link rel="manifest" href="manifest.json">
+  <meta name="theme-color" content="#2563eb">
+</head>
+<body>
+  <div class="container">
+    <h1>Doctor Duty Scheduler</h1>
+    
+    <div class="toggle-container">
+      <label>
+        <input type="radio" name="day" value="today icu/ot doctors" checked> Today
+      </label>
+      <label>
+        <input type="radio" name="day" value="tomorrow icu/ot doctors"> Tomorrow
+      </label>
+    </div>
+
+    <div class="doctors">
+      <button class="doctor" draggable="true">Dr Deepak</button>
+      <button class="doctor" draggable="true">Dr Srinivas</button>
+      <button class="doctor" draggable="true">Dr Usharani</button>
+      <button class="doctor" draggable="true">Dr XYZxyzxyz</button>
+    </div>
+
+    <div class="boxes">
+      <div class="box" data-shift="morning">Morning Duty</div>
+      <div class="box" data-shift="afternoon">Afternoon Duty</div>
+      <div class="box" data-shift="night">Night Duty</div>
+      <div class="box" data-shift="off">Duty Off</div>
+      <div class="box" data-shift="24 hrs">24 hrs Duty</div>
+    </div>
+
+    <div class="actions">
+      <button id="create">Create</button>
+      <button id="copy">Copy to Clipboard</button>
+    </div>
+
+    <pre id="output"></pre>
+  </div>
+
+  <script src="scripts/app.js"></script>
+  <script>
+  if ('serviceWorker' in navigator) {
+    navigator.serviceWorker.register('service-worker.js')
+      .then(() => console.log('Service Worker Registered'));
+  }
+  </script>
+</body>
+</html>
