@@ -47,6 +47,14 @@ document.addEventListener('DOMContentLoaded', () => {
     if (morning) text += `*9 am to 5 pm:* ${morning}\n`;
     if (afternoon) text += `*12 noon to 8 pm:* ${afternoon}\n`;
     if (night) text += `*5 pm to 9 am (night duty):* ${night}\n`;
+    if (night) {
+      if (night.includes("Dr Manikanta") || night.includes("Dr Sindhuja")) {
+          text += `*5 pm to 8 am (night duty):* ${night}\n`;
+        } else {
+          text += `*5 pm to 9 am (night duty):* ${night}\n`;
+        }
+    }
+
     if (off) text += `*Duty off:* ${off}\n`;
     if (hrs24) text += `*24 hrs Duty:* ${hrs24}\n`;
 
@@ -84,9 +92,5 @@ function isWordInSentence(sentence, word) {
   const regex = new RegExp(`^${word}$`, 'i'); // \b ensures word boundaries
   return regex.test(sentence);
 }
-
-
-
-
 
 });
