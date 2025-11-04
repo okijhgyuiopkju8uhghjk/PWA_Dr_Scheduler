@@ -41,15 +41,7 @@ h1 {
   cursor: grab;
   flex: 1 1 auto;
 }
-.doctorOutside {
-  padding: 10px 15px;
-  border: none;
-  border-radius: 8px;
-  background: #e8eb25;
-  color: #2825EB;
-  cursor: grab;
-  flex: 1 1 auto;
-}
+
 .boxes {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
