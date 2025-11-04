@@ -1,5 +1,5 @@
 document.addEventListener('DOMContentLoaded', () => {
-  const doctors = document.querySelectorAll('.doctor');
+  const doctors = document.querySelectorAll('.doctor','.doctorOutside');
   const boxes = document.querySelectorAll('.box');
   const createBtn = document.getElementById('create');
   const copyBtn = document.getElementById('copy');
