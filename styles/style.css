@@ -26,20 +26,21 @@ h1 {
   flex-wrap: wrap;
 }
 .doctors {
-  display: flex;
-  justify-content: center;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
   gap: 10px;
-  margin-bottom: 20px;
-  flex-wrap: wrap;
+  margin: 20px 0;
 }
+
 .doctor {
   padding: 10px 15px;
   border: none;
-  border-radius: 8px;
-  background: #2563eb;
+  background-color: #2563eb;
   color: white;
+  border-radius: 5px;
+  font-size: 1rem;
   cursor: grab;
-  flex: 1 1 auto;
+  transition: background 0.2s;
 }
 
 .boxes {
@@ -48,6 +49,7 @@ h1 {
   gap: 15px;
   margin-bottom: 20px;
 }
+
 .box {
   border: 2px dashed #ccc;
   padding: 20px;
@@ -56,10 +58,12 @@ h1 {
   background: #f1f5f9;
   word-wrap: break-word;
 }
+
 .box.dragover {
   border-color: #2563eb;
   background: #e0f2fe;
 }
+
 #output {
   margin-top: 20px;
   background: #f9fafb;
@@ -68,12 +72,14 @@ h1 {
   border: 1px solid #e5e7eb;
   white-space: pre-wrap;
 }
+
 .actions {
   display: flex;
   justify-content: center;
   gap: 10px;
   flex-wrap: wrap;
 }
+
 .actions button {
   padding: 10px 20px;
   border: none;
@@ -81,21 +87,51 @@ h1 {
   cursor: pointer;
   color: white;
 }
+
 #create {
   background: #16a34a;
 }
+
 #copy {
   background: #2563eb;
 }
+
 @media (max-width: 600px) {
   body {
     padding: 10px;
   }
+
   .box {
     min-height: 60px;
     padding: 15px;
   }
+
   .doctor {
     flex: 1 1 100%;
+  }
+}
+
+
+.doctor:active {
+  cursor: grabbing;
+  background-color: #1e40af;
+}
+
+/* Optional: tweak grid layout on smaller screens */
+@media (max-width: 900px) {
+  .doctors {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (max-width: 600px) {
+  .doctors {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 400px) {
+  .doctors {
+    grid-template-columns: 1fr;
   }
 }
