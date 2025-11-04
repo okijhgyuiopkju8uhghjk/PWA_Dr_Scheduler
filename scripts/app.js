@@ -46,7 +46,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     if (morning) text += `*9 am to 5 pm:* ${morning}\n`;
     if (afternoon) text += `*12 noon to 8 pm:* ${afternoon}\n`;
-    if (night) text += `*5 pm to 9 am (night duty):* ${night}\n`;
+    //if (night) text += `*5 pm to 9 am (night duty):* ${night}\n`;
     if (night) {
       if (night.includes("Dr Manikanta") || night.includes("Dr Sindhuja")) {
           text += `*5 pm to 8 am (night duty):* ${night}\n`;
