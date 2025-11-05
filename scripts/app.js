@@ -1,5 +1,5 @@
 document.addEventListener('DOMContentLoaded', () => {
-  const doctors = document.querySelectorAll('.doctor','.doctorOutside');
+  const doctors = document.querySelectorAll('.doctor');
   const boxes = document.querySelectorAll('.box');
   const createBtn = document.getElementById('create');
   const copyBtn = document.getElementById('copy');
@@ -33,8 +33,13 @@ document.addEventListener('DOMContentLoaded', () => {
   createBtn.addEventListener('click', () => {
     const selectedDay = document.querySelector('input[name="day"]:checked').value;
     const today = new Date();
-    const targetDate = selectedDay === 'today icu/ot doctors' ? today : new Date(today.getTime() + 24*60*60*1000);
+    const targetDate = selectedDay.includes('today') ? today : new Date(today.getTime() + 24 * 60 * 60 * 1000);
     const dateStr = targetDate.toLocaleDateString('en-IN');
+
+    const confirmationMessage = `Are you sure about the following?\nDay: ${selectedDay.includes('today') ? 'Today' : 'Tomorrow'}\nDate: ${dateStr}`;
+    if (!confirm(confirmationMessage)) {
+      return; // Stop execution if the user cancels
+    }
 
     let text = `${selectedDay.toUpperCase()}\nDate: ${dateStr}\n`;
 
@@ -46,15 +51,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     if (morning) text += `*9 am to 5 pm:* ${morning}\n`;
     if (afternoon) text += `*12 noon to 8 pm:* ${afternoon}\n`;
-    //if (night) text += `*5 pm to 9 am (night duty):* ${night}\n`;
-    if (night) {
-      if (night.includes("Dr Manikanta") || night.includes("Dr Sindhuja")) {
-          text += `*5 pm to 8 am (night duty):* ${night}\n`;
-        } else {
-          text += `*5 pm to 9 am (night duty):* ${night}\n`;
-        }
-    }
-
+    if (night) text += `*5 pm to 9 am (night duty):* ${night}\n`;
     if (off) text += `*Duty off:* ${off}\n`;
     if (hrs24) text += `*24 hrs Duty:* ${hrs24}\n`;
 
@@ -76,21 +73,25 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   });
 
-/**
- * Function to check if a word exists in a sentence
- * @param {string} sentence - The sentence to search in
- * @param {string} word - The word to search for
- * @returns {boolean} - Returns true if the word is found, false otherwise
- */
-function isWordInSentence(sentence, word) {
-  // Validate inputs
-  if (typeof sentence !== 'string' || typeof word !== 'string') {
+  /**
+   * Function to check if a word exists in a sentence
+   * @param {string} sentence - The sentence to search in
+   * @param {string} word - The word to search for
+   * @returns {boolean} - Returns true if the word is found, false otherwise
+   */
+  function isWordInSentence(sentence, word) {
+    // Validate inputs
+    if (typeof sentence !== 'string' || typeof word !== 'string') {
       throw new Error("Both sentence and word must be strings.");
+    }
+
+    // Use a regular expression to check for the word as a whole word (case-insensitive)
+    const regex = new RegExp(`^${word}$`, 'i'); // \b ensures word boundaries
+    return regex.test(sentence);
   }
 
-  // Use a regular expression to check for the word as a whole word (case-insensitive)
-  const regex = new RegExp(`^${word}$`, 'i'); // \b ensures word boundaries
-  return regex.test(sentence);
-}
+
+
+
 
 });
