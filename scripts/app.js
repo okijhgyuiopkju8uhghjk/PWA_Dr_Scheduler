@@ -59,9 +59,9 @@ document.addEventListener('DOMContentLoaded', () => {
         text += `*5 pm to 9 am (night duty):* ${night}\n`;
       }
     }
-    if (off) text += `Duty off:* ${off}*\n`;
-    if (hrs24) text += `24 hrs Duty:* ${hrs24}*\n`;
-    if (onCall) text += `Anesthesiologist On Call:* ${onCall}*\n`;
+    if (off) text += `Duty off:*${off}*\n`;
+    if (hrs24) text += `24 hrs Duty:*${hrs24}*\n`;
+    if (onCall) text += `Anesthesiologist On Call (8 pm to 9 am):*${onCall}*\n`;
 
     output.textContent = text.trim();
 
