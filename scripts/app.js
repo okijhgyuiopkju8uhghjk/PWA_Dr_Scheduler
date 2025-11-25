@@ -50,8 +50,8 @@ document.addEventListener('DOMContentLoaded', () => {
     const hrs24 = document.querySelector('[data-shift="24 hrs"]').getAttribute('data-doctor');
     const onCall = document.querySelector('[data-shift="on Call"]').getAttribute('data-doctor');
 
-    if (morning) text += `*8 am to 4 pm:* ${morning}\n`;
-    if (afternoon) text += `*12 noon to 8 pm:* ${afternoon}\n`;
+    if (morning) text += `8 am to 4 pm:*${morning}*\n`;
+    if (afternoon) text += `12 noon to 8 pm:*${afternoon}*\n`;
     if (night) {
       if (night.trim() === 'Dr Manikanta' || night.trim() === 'Dr Sindhuja') {
         text += `*5 pm to 8 am (night duty):* ${night}\n`;
