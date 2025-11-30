@@ -46,9 +46,10 @@ document.addEventListener('DOMContentLoaded', () => {
     const morning = document.querySelector('[data-shift="morning"]').getAttribute('data-doctor');
     const afternoon = document.querySelector('[data-shift="afternoon"]').getAttribute('data-doctor');
     const night = document.querySelector('[data-shift="night"]').getAttribute('data-doctor');
+    const onCall = document.querySelector('[data-shift="on Call"]').getAttribute('data-doctor');
     const off = document.querySelector('[data-shift="off"]').getAttribute('data-doctor');
     const hrs24 = document.querySelector('[data-shift="24 hrs"]').getAttribute('data-doctor');
-    const onCall = document.querySelector('[data-shift="on Call"]').getAttribute('data-doctor');
+    
 
     if (morning) text += `*8 am to 4 pm:* ${morning}\n`;
     if (afternoon) text += `*12 noon to 8 pm:* ${afternoon}\n`;
