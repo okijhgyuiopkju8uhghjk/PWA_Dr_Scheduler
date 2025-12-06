@@ -110,6 +110,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const onCallTime = onCallBox.dataset.time;
     const off = document.querySelector('[data-shift="off"]').dataset.doctors;
     const hrs24 = document.querySelector('[data-shift="24hrs"]').dataset.doctor;
+    const leave = document.querySelector('[data-shift="leave"]').dataset.doctor;
 
     if (morning) text += `*8 am to 4 pm:* ${morning}\n`;
     if (afternoon) text += `*12 noon to 8 pm:* ${afternoon}\n`;
@@ -117,6 +118,7 @@ document.addEventListener('DOMContentLoaded', () => {
     if (onCallDoctor) text += `*Anesthetist On Call (${onCallTime}):* ${onCallDoctor}\n`;
     if (off) text += `*Duty off:* ${off}\n`;
     if (hrs24) text += `*24 hrs Duty(9 am to 9 am):* ${hrs24}\n`;
+    if (leave) text += `*Leave:* ${leave}\n`;
 
 
     output.textContent = text.trim();
