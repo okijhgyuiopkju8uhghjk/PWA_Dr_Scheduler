@@ -12,5 +12,6 @@ const shifts = [
   { id: 'night', name: 'Night Duty' },
   { id: '24hrs', name: '24 hrs Duty' },
   { id: 'oncall', name: 'Anesthesiologist On Call' },
-  { id: 'off', name: 'Duty Off' }
+  { id: 'off', name: 'Duty Off' },
+  { id: 'leave', name: 'Leave' }
 ];
