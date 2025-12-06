@@ -115,9 +115,9 @@ document.addEventListener('DOMContentLoaded', () => {
     if (morning) text += `*8 am to 4 pm:* ${morning}\n`;
     if (afternoon) text += `*12 noon to 8 pm:* ${afternoon}\n`;
     if (night) text += `*5 pm to 9 am (night duty):* ${night}\n`;
+    if (hrs24) text += `*24 hrs Duty(9 am to 9 am):* ${hrs24}\n`;
     if (onCallDoctor) text += `*Anesthetist On Call- ${onCallTime} :* ${onCallDoctor}\n`;
     if (off) text += `*Duty off:* ${off}\n`;
-    if (hrs24) text += `*24 hrs Duty(9 am to 9 am):* ${hrs24}\n`;
     if (leave) text += `*Leave:* ${leave}\n`;
 
 
