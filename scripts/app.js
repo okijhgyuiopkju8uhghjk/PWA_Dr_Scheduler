@@ -17,17 +17,17 @@ document.addEventListener('DOMContentLoaded', () => {
     const selectedDay = document.querySelector('input[name="day"]:checked').value;
     const doctors = document.querySelectorAll('.doctor');
     const container = document.querySelector('.container');
-    
+
     if (selectedDay === 'not-selected') {
-      document.body.style.backgroundColor = 'red';
+
       container.style.backgroundColor = 'red';
       doctors.forEach(doctor => doctor.draggable = false);
     } else if (selectedDay === 'today icu/ot doctors') {
-      document.body.style.backgroundColor = 'darkgrey';
+
       container.style.backgroundColor = 'darkgrey';
       doctors.forEach(doctor => doctor.draggable = true);
     } else if (selectedDay === 'tomorrow icu/ot doctors') {
-      document.body.style.backgroundColor = 'skyblue';
+
       container.style.backgroundColor = 'skyblue';
       doctors.forEach(doctor => doctor.draggable = true);
     }
@@ -119,8 +119,8 @@ document.addEventListener('DOMContentLoaded', () => {
     const selectedDay = document.querySelector('input[name="day"]:checked').value;
 
     if (selectedDay === 'not-selected') {
-        alert('Please select a day to create the schedule.');
-        return;
+      alert('Please select a day to create the schedule.');
+      return;
     }
 
     const today = new Date();
