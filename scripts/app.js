@@ -13,6 +13,32 @@ document.addEventListener('DOMContentLoaded', () => {
 
   let pendingOnCall = null;
 
+  function updateState() {
+    const selectedDay = document.querySelector('input[name="day"]:checked').value;
+    const doctors = document.querySelectorAll('.doctor');
+    const container = document.querySelector('.container');
+    
+    if (selectedDay === 'not-selected') {
+      document.body.style.backgroundColor = 'red';
+      container.style.backgroundColor = 'red';
+      doctors.forEach(doctor => doctor.draggable = false);
+    } else if (selectedDay === 'today icu/ot doctors') {
+      document.body.style.backgroundColor = 'darkgrey';
+      container.style.backgroundColor = 'darkgrey';
+      doctors.forEach(doctor => doctor.draggable = true);
+    } else if (selectedDay === 'tomorrow icu/ot doctors') {
+      document.body.style.backgroundColor = 'skyblue';
+      container.style.backgroundColor = 'skyblue';
+      doctors.forEach(doctor => doctor.draggable = true);
+    }
+  }
+
+  document.querySelectorAll('input[name="day"]').forEach(radio => {
+    radio.addEventListener('change', updateState);
+  });
+
+  updateState(); // Set initial state
+
   function showOnCallModal(doctorName, shiftBox) {
     pendingOnCall = { doctorName, shiftBox };
     onCallModal.style.display = 'block';
@@ -91,6 +117,12 @@ document.addEventListener('DOMContentLoaded', () => {
 
   createBtn.addEventListener('click', () => {
     const selectedDay = document.querySelector('input[name="day"]:checked').value;
+
+    if (selectedDay === 'not-selected') {
+        alert('Please select a day to create the schedule.');
+        return;
+    }
+
     const today = new Date();
     const targetDate = selectedDay.includes('today') ? today : new Date(today.getTime() + 24 * 60 * 60 * 1000);
     const dateStr = targetDate.toLocaleDateString('en-IN');
