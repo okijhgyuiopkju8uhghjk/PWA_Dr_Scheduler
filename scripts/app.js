@@ -20,11 +20,11 @@ document.addEventListener('DOMContentLoaded', () => {
 
     if (selectedDay === 'not-selected') {
 
-      container.style.backgroundColor = 'red';
+      container.style.backgroundColor = '#F2A799';
       doctors.forEach(doctor => doctor.draggable = false);
     } else if (selectedDay === 'today icu/ot doctors') {
 
-      container.style.backgroundColor = 'darkgrey';
+      container.style.backgroundColor = '#C2C2C2';
       doctors.forEach(doctor => doctor.draggable = true);
     } else if (selectedDay === 'tomorrow icu/ot doctors') {
 
