@@ -6,6 +6,15 @@ document.addEventListener('DOMContentLoaded', () => {
   const output = document.getElementById('output');
   const onCallModal = document.getElementById('on-call-modal');
   const modalOptions = document.getElementById('modal-options');
+  const scheduleInput = document.getElementById('schedule-input');
+
+  const doctorMapping = {
+    'D': 'Dr Deepak',
+    'U': 'Dr Usharani',
+    'S': 'Dr Srinivas',
+    'R': 'Dr Rajesh',
+    '-': ' - '
+  };
 
   // Add the original classes for styling
   doctorsContainer.classList.add('doctors');
@@ -115,6 +124,84 @@ document.addEventListener('DOMContentLoaded', () => {
     boxesContainer.appendChild(shiftBox);
   });
 
+  scheduleInput.addEventListener('input', e => {
+    const value = e.target.value.toUpperCase();
+    const morningBox = document.querySelector('[data-shift="morning"]');
+    const afternoonBox = document.querySelector('[data-shift="afternoon"]');
+    const nightBox = document.querySelector('[data-shift="night"]');
+    const onCallBox = document.querySelector('[data-shift="oncall"]');
+    const offBox = document.querySelector('[data-shift="off"]');
+
+    // Reset boxes
+    morningBox.textContent = 'Morning Duty';
+    morningBox.dataset.doctor = '';
+    afternoonBox.textContent = 'Afternoon Duty';
+    afternoonBox.dataset.doctor = '';
+    nightBox.textContent = 'Night Duty';
+    nightBox.dataset.doctor = '';
+    onCallBox.textContent = 'Anesthesiologist On Call';
+    onCallBox.dataset.doctor = '';
+    onCallBox.dataset.time = '';
+    offBox.textContent = 'Duty Off';
+    offBox.dataset.doctors = '';
+
+
+    if (value.length === 4) {
+      const [morningChar, afternoonChar, nightChar, offChar] = value.split('');
+      
+      const morningDoctor = doctorMapping[morningChar];
+      const afternoonDoctor = doctorMapping[afternoonChar];
+      const nightDoctor = doctorMapping[nightChar];
+      const offDoctor = doctorMapping[offChar];
+
+      if (morningDoctor) {
+        morningBox.textContent = `Morning Duty: ${morningDoctor}`;
+        morningBox.dataset.doctor = morningDoctor;
+      }
+      if (afternoonDoctor) {
+        afternoonBox.textContent = `Afternoon Duty: ${afternoonDoctor}`;
+        afternoonBox.dataset.doctor = afternoonDoctor;
+      }
+      if (nightDoctor) {
+        nightBox.textContent = `Night Duty: ${nightDoctor}`;
+        nightBox.dataset.doctor = nightDoctor;
+      }
+      if (offDoctor) {
+        offBox.textContent = `Duty Off: ${offDoctor}`;
+        offBox.dataset.doctors = offDoctor;
+      }
+
+    } else if (value.length === 5) {
+      const [morningChar, afternoonChar, nightChar, onCallChar, offChar] = value.split('');
+
+      const morningDoctor = doctorMapping[morningChar];
+      const afternoonDoctor = doctorMapping[afternoonChar];
+      const nightDoctor = doctorMapping[nightChar];
+      const onCallDoctor = doctorMapping[onCallChar];
+      const offDoctor = doctorMapping[offChar];
+
+      if (morningDoctor) {
+        morningBox.textContent = `Morning Duty: ${morningDoctor}`;
+        morningBox.dataset.doctor = morningDoctor;
+      }
+      if (afternoonDoctor) {
+        afternoonBox.textContent = `Afternoon Duty: ${afternoonDoctor}`;
+        afternoonBox.dataset.doctor = afternoonDoctor;
+      }
+      if (nightDoctor) {
+        nightBox.textContent = `Night Duty: ${nightDoctor}`;
+        nightBox.dataset.doctor = nightDoctor;
+      }
+      if (onCallDoctor && onCallDoctor !== ' - ') {
+        showOnCallModal(onCallDoctor, onCallBox);
+      }
+      if (offDoctor) {
+        offBox.textContent = `Duty Off: ${offDoctor}`;
+        offBox.dataset.doctors = offDoctor;
+      }
+    }
+  });
+
   createBtn.addEventListener('click', () => {
     const selectedDay = document.querySelector('input[name="day"]:checked').value;
 
@@ -163,6 +250,21 @@ document.addEventListener('DOMContentLoaded', () => {
       });
     } else {
       alert('No schedule to copy!');
+    }
+  });
+
+  const editBtn = document.getElementById('edit');
+
+  editBtn.addEventListener('click', () => {
+    if (output.contentEditable === 'true') {
+      output.contentEditable = 'false';
+      editBtn.textContent = 'Edit';
+      output.style.border = '1px solid #e5e7eb'; // Revert border
+    } else {
+      output.contentEditable = 'true';
+      editBtn.textContent = 'Save';
+      output.focus();
+      output.style.border = '2px dashed #2563eb'; // Highlight editable area
     }
   });
 });

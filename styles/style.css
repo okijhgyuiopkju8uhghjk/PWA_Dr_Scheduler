@@ -172,3 +172,22 @@ h1 {
   background-color: #f1f1f1;
   cursor: pointer;
 }
+.schedule-input-container {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin-bottom: 20px;
+  align-items: center;
+}
+
+#schedule-input {
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 1rem;
+  width: 200px;
+}
+
+#edit {
+  background: #f97316;
+}
