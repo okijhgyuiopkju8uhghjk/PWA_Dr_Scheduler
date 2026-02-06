@@ -10,7 +10,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   const doctorMapping = {
     'D': 'Dr Deepak',
-    'U': 'Dr Usharani',
+    'N': 'Dr Nikhilesh',
     'S': 'Dr Srinivas',
     'R': 'Dr Rajesh',
     '-': ' - '
